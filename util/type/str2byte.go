@@ -8,7 +8,6 @@ import (
 func str2byte(str string) string {
 	var bl = []byte(str)
 	var hs = hex.EncodeToString(bl)
-	fmt.Println(len(hs))
 	if len(hs) >= 64 {
 		return "0x" + hs[0:64]
 	}
@@ -19,13 +18,26 @@ func str2byte(str string) string {
 		hs = hs + "0000"
 
 	}
-	return "0x" + hs
+	return "0x" + hs[0:64]
 }
 
-func test() {
-	fmt.Println(str2byte("proposal a"))
+func singleTest() {
+	fmt.Println(str2byte("this is me"))
+}
+
+func multipleTest() {
+	//var strs = [...]string{"Reg01", "1", "this is me", "this is json string", "Rel01", "Plf01", "Mtr01", "Pxy01"}
+	//var strs = [...]string{"Reg02", "1", "this is me", "this is json string", "Rel01", "Plf02", "Mtr01", "Pxy02"}
+
+	var strs = [...]string{"Reg01", "1", "this is me", "asset00", "music piece", "ethereum", "Rel01", "Plf01", "Mtr01", "Pxy01"}
+	//var strs = [...]string{"Reg02", "1", "this is me", "asset01", "artwork", "ethereum", "Rel01", "Plf02", "Mtr01", "Pxy02"}
+
+	for _, str := range strs {
+		fmt.Println(str2byte(str))
+	}
 }
 
 func main() {
-	test()
+	//singleTest()
+	multipleTest()
 }
