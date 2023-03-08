@@ -16,7 +16,6 @@ func str2byte(str string) string {
 			break
 		}
 		hs = hs + "0000"
-
 	}
 	return "0x" + hs[0:64]
 }
